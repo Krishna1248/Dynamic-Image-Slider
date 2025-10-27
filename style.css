@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Dynamic Image Slider</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .slider {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    /* Slider container for positioning */
+    .slides {
+      display: flex;
+      width: 400%;
+      transition: transform 1s ease;
+    }
+
+    /* Image styles */
+    .slides img {
+      width: 25%; /* 100% / number of images */
+      border-radius: 10px;
+    }
+
+    /* Hide radio buttons */
+    .slider input[type="radio"] {
+      display: none;
+    }
+
+    /* Navigation dots */
+    .dots {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    /* Active dot */
+    .slider input[type="radio"]:checked + .slides .slide1 {
+      transform: translateX(0);
+    }
+    .slider input[type="radio"]:checked + .slides .slide2 {
+      transform: translateX(-25%);
+    }
+    .slider input[type="radio"]:checked + .slides .slide3 {
+      transform: translateX(-50%);
+    }
+    .slider input[type="radio"]:checked + .slides .slide4 {
+      transform: translateX(-75%);
+    }
+
+    .dot:checked {
+      background-color: white;
+    }
+
+    /* Styling the radio buttons that control the slides */
+    input[type="radio"]:nth-child(1) ~ .dots label:nth-child(1),
+    input[type="radio"]:nth-child(2) ~ .dots label:nth-child(2),
+    input[type="radio"]:nth-child(3) ~ .dots label:nth-child(3),
+    input[type="radio"]:nth-child(4) ~ .dots label:nth-child(4) {
+      background-color: white;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="slider">
+    <input type="radio" id="slide1" name="slide" checked />
+    <input type="radio" id="slide2" name="slide" />
+    <input type="radio" id="slide3" name="slide" />
+    <input type="radio" id="slide4" name="slide" />
+
+    <div class="slides">
+      <div class="slide1">
+        <img src="https://picsum.photos/800/400?random=1" alt="Image 1" />
+      </div>
+      <div class="slide2">
+        <img src="https://picsum.photos/800/400?random=2" alt="Image 2" />
+      </div>
+      <div class="slide3">
+        <img src="https://picsum.photos/800/400?random=3" alt="Image 3" />
+      </div>
+      <div class="slide4">
+        <img src="https://picsum.photos/800/400?random=4" alt="Image 4" />
+      </div>
+    </div>
+
+    <!-- Navigation dots -->
+    <div class="dots">
+      <label for="slide1" class="dot"></label>
+      <label for="slide2" class="dot"></label>
+      <label for="slide3" class="dot"></label>
+      <label for="slide4" class="dot"></label>
+    </div>
+  </div>
+
+</body>
+</html>
